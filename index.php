@@ -1,11 +1,15 @@
 <?php
 include_once  'My_HTML.php';
+session_start();
 
 // print_r($_POST);
+// print_r('<br>');
+// print_r($_SESSION);
 $page = new My_HTML();
 
 if ( isset($_POST['page']) ) {
   if ($_POST['page'] == '回答') {
+    $_SESSION = $_POST;
     $page->setTitle('確認');
     $body = $page->confirmPage();
     $page->setBody($body);
@@ -21,6 +25,9 @@ if ( isset($_POST['page']) ) {
     $page->setTitle('確定');
     $body = $page->endPage();
     $page->setBody($body);
+    $_SESSION = array();
+    setcookie("PHPSESSID",'',time()-1800,'/');
+    session_destroy();
   } else {
 
   }
