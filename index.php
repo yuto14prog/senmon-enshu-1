@@ -2,9 +2,9 @@
 include_once  'My_HTML.php';
 session_start();
 
-// print_r($_POST);
-// print_r('<br>');
-// print_r($_SESSION);
+print_r($_POST);
+print_r('<br>');
+print_r($_SESSION);
 $page = new My_HTML();
 
 if ( isset($_POST['page']) ) {
